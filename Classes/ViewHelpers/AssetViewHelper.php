@@ -66,8 +66,8 @@ class AssetViewHelper extends AbstractViewHelper
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
 
         if ($viteDevServerRunning) {
-            $pageRenderer->addJsFile($domainWithPort . '/@vite/client', 'module');
-            $pageRenderer->addJsFile($domainWithPort . '/' . $srcPath . '/' . $entry, 'module');
+            $pageRenderer->addHeaderData('<script src="' . $domainWithPort . '/@vite/client' . '" type="module"></script>');
+            $pageRenderer->addHeaderData('<script src="' . $domainWithPort . '/' . $srcPath . '/' . $entry . '" type="module"></script>');
         }
 
         if (!$viteDevServerRunning and $outPath and $srcPath) {
